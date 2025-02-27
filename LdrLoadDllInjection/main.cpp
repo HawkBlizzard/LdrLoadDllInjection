@@ -1,4 +1,4 @@
-
+// main.cpp
 #include "injector.h"
 
 // エントリポイント
@@ -11,7 +11,6 @@ int wmain(int argc, wchar_t* argv[]) {
 	    HANDLE moduleHandle = nullptr;
 	    NTSTATUS status = LdrLoadDll(NULL, 0, &uStr, &moduleHandle);
      }
-
     
     00007FF70A3D1060 | 48:83EC 48               | sub rsp,48
     00007FF70A3D1064 | 48:8B05 951F0000         | mov rax,qword ptr ds:[7FF70A3D3000]
@@ -33,8 +32,6 @@ int wmain(int argc, wchar_t* argv[]) {
     00007FF70A3D10B1 | 48:83C4 48               | add rsp,48
     00007FF70A3D10B5 | C3                       | ret
     */
-
-
 
     std::vector<BYTE> ldrLoadDllStub{
         0x48, 0x83, 0xEC, 0x48, // sub rsp,48
@@ -59,7 +56,7 @@ int wmain(int argc, wchar_t* argv[]) {
     SIZE_T ldrLoadDllFuncOffset = 56;
 
     if (argc != 3) {
-        std::cout << "Usage: [プロセス名] [DLLパス]" << std::endl;
+        std::cout << "Usage: " << argv[0] << "[プロセス名] [DLLパス]" << std::endl;
         return 1;
     }
 
