@@ -5,6 +5,14 @@
 int wmain(int argc, wchar_t* argv[]) {
 
     /* ‹tƒAƒZƒ“ƒuƒ‹
+    void func() {
+	    UNICODE_STRING uStr;
+	    RtlInitUnicodeString(&uStr, L"C:\\Payload\\Test.dll");
+	    HANDLE moduleHandle = nullptr;
+	    NTSTATUS status = LdrLoadDll(NULL, 0, &uStr, &moduleHandle);
+     }
+
+    
     00007FF70A3D1060 | 48:83EC 48               | sub rsp,48
     00007FF70A3D1064 | 48:8B05 951F0000         | mov rax,qword ptr ds:[7FF70A3D3000]
     00007FF70A3D106B | 48:33C4                  | xor rax,rsp
